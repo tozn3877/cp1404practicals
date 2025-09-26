@@ -11,7 +11,8 @@ def main():
     calculate_score_result(score)
     print(calculate_score_result(score))
 
-
+    random_score = random.randint(0, 100)
+    print(f"Ramdom score: {calculate_score_result(random_score)}")
 
 def calculate_score_result(score: float):
     """Determine the status string for a given score."""
