@@ -1,6 +1,6 @@
 """
 CP1404/CP5632 - Practical
-Score menu program (basic menu structure only)
+Score menu program
 """
 
 MENU = """(G)et a valid score
@@ -11,15 +11,22 @@ MENU = """(G)et a valid score
 
 def main():
     """Display menu and process user choice"""
+    score = get_valid_score()
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "G":
-            print("You chose to get a valid score")
+            score = get_valid_score()
         elif choice == "P":
-            print("You chose to print result")
+            if score is None:
+                print("You must get a valid score first")
+            else:
+                print(f"Result is: {calculate_score_result(score)}")
         elif choice == "S":
-            print("You chose to show stars")
+            if score is None:
+                print("You must get a valid score first")
+            else:
+                print_stars(score)
         else:
             print("Invalid choice")
         print(MENU)
@@ -27,6 +34,27 @@ def main():
     print("Goodbye")
 
 
+def get_valid_score():
+    """Prompt the user for a valid score between 0 and 100"""
+    score = float(input("Enter score: "))
+    while score < 0 or score > 100:
+        print("Invalid score")
+        score = float(input("Enter score: "))
+    return score
 
+def print_stars(score):
+    """Print stars equal to the integer value of the score."""
+    print('*' * int(score))
+
+def calculate_score_result(score: float):
+    """Determine the status string for a given score."""
+    if score < 0 or score > 100:
+        return("Invalid score")
+    elif score >= 90:
+        return("Excellent")
+    elif score >= 50:
+        return("Passable")
+    else:
+        return("Bad")
 
 main()
