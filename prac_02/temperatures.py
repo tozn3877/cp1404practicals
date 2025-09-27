@@ -8,7 +8,7 @@ F - Convert Fahrenheit to Celsius
 Q - Quit"""
 
 def main():
-    """Temperature conversion program to interact with user with gui"""
+    """Temperature conversion program to interact with user"""
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
