@@ -10,7 +10,7 @@ usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'B
 def main():
     numbers = get_five_numbers()
     print_provided_number_info(numbers)
-
+    check_username_access()
 
 
 def get_five_numbers():
@@ -31,5 +31,12 @@ def print_provided_number_info(numbers):
     print(f"The average of the numbers is {average:.1f}")
 
 
+def check_username_access():
+    """Ask for username, check against list provided in code"""
+    username = input("Username: ")
+    if username in usernames:
+        print("Access granted")
+    else:
+        print("Access denied")
 
 main()
