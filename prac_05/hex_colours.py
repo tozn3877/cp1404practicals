@@ -16,3 +16,10 @@ HEX_COLOURS = {
     "antiquewhite2": "#eedfcc",
 }
 
+colour_name = input("Enter colour name: ").strip().lower()
+while colour_name != "":
+    try:
+        print(f"{colour_name} is {HEX_COLOURS[colour_name]}")
+    except KeyError:
+        print("Invalid colour name")
+    colour_name = input("Enter colour name: ").strip().lower()
