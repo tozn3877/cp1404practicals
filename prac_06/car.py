@@ -16,6 +16,11 @@ class Car:
         """Add amount to the car's fuel."""
         self.fuel += amount
 
+#Q2, add method
+    def add(self, amount):
+        """Add amount of fuel (alias to match prac wording)."""
+        self.add_fuel(amount)
+
     def drive(self, distance):
         """Drive the car a given distance.
 
