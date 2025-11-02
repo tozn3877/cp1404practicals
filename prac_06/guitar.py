@@ -3,7 +3,7 @@ CP1404 prac
 Guitar class to store name, year and cost, age/vintage
 
 Estimated time: 35 minutes
-Actual time: idk
+Actual time: 52
 """
 
 CURRENT_YEAR = 2022  # used 2022 as the ages in readme are based off this year

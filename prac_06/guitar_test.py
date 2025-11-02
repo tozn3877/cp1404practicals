@@ -4,7 +4,7 @@ Tests for Guitar.get_age() and Guitar.is_vintage()
 Guitar class to store name, year and cost, age/vintage
 
 Estimated time: 35 minutes
-Actual time: idk
+Actual time: 52
 """
 
 from prac_06.guitar import Guitar, CURRENT_YEAR
