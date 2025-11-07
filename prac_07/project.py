@@ -23,6 +23,10 @@ class Project:
         return (f"{self.name}, start: {start}, priority {self.priority}, "
                 f"estimate: ${self.cost_estimate:.2f}, completion: {self.completion}%")
 
+    def __lt__(self, other):
+        """Return True if this project should sort before the other by priority."""
+        return self.priority < other.priority
+
     def is_complete(self) -> bool:
         """Return True if the project is complete (100%)."""
         return self.completion == 100
