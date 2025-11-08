@@ -3,7 +3,7 @@ CP1404/CP5632 - Practical
 project management program
 
 estimate:1.5h
-actual:
+actual:4.5h
 """
 
 from datetime import datetime
@@ -168,33 +168,99 @@ def update_project(projects):
             print("Invalid priority; keeping existing value.")
 
 
+def prompt_non_empty(prompt):
+    """Prompt for a non-empty string."""
+    text = input(prompt).strip()
+    while text == "":
+        print("Input cannot be blank")
+        text = input(prompt).strip()
+    return text
 
 
 def prompt_valid_date_string(prompt):
+    """Prompt for a date string in dd/mm/yyyy format."""
+    text = input(prompt).strip()
+    while not is_valid_date(text):
+        print("Invalid date format")
+        text = input(prompt).strip()
+    return text
 
 
 def is_valid_date(text):
+    """Return True if text matches DATE_FORMAT."""
+    try:
+        datetime.strptime(text, DATE_FORMAT)
+        return True
+    except ValueError:
+        return False
 
 
 def prompt_valid_int(prompt):
+    """Prompt until a valid int is entered; return the int."""
+    while True:
+        text = input(prompt).strip()
+        try:
+            return int(text)
+        except ValueError:
+            print("Invalid integer")
 
 
 def prompt_valid_int_value(text):
+    """Validate an existing text as int; used in update when user already entered something."""
+    try:
+        return int(text)
+    except ValueError:
+        raise
 
 
 def prompt_valid_int_in_range(prompt, low, high):
-
+    """Prompt until an int in [low, high] is entered; return the int."""
+    while True:
+        text = input(prompt).strip()
+        try:
+            value = int(text)
+            if low <= value <= high:
+                return value
+            print(f"Value must be between {low} and {high}")
+        except ValueError:
+            print("Invalid integer")
 
 
 def prompt_valid_int_in_range_value(text, low, high):
+    """Validate an existing text as int in [low, high]; raise if invalid so caller can keep existing."""
+    try:
+        value = int(text)
+        if low <= value <= high:
+            return value
+        raise ValueError
+    except ValueError:
+        raise
 
 
 def prompt_valid_float(prompt, minimum=0.0):
-
+    """Prompt until a valid float >= minimum is entered; return the float."""
+    while True:
+        text = input(prompt).strip()
+        try:
+            value = float(text)
+            if value >= minimum:
+                return value
+            print(f"Value must be >= {minimum}")
+        except ValueError:
+            print("Invalid number")
 
 
 def prompt_valid_index(prompt, length):
-
+    """Prompt until a valid index in range is entered; return the index."""
+    while True:
+        text = input(prompt).strip()
+        try:
+            index = int(text)
+            if 0 <= index < length:
+                return index
+            print("Invalid project number")
+        except ValueError:
+            print("Invalid integer")
 
 
 main()
