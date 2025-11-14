@@ -22,20 +22,24 @@ class MilesToKilometresApp(App):
 
     def convert_miles_to_km(self):
         """Handle conversion from miles to kilometres."""
-        miles_text = self.root.ids.input_miles.text
-        miles = float(miles_text)
+        miles = self.get_miles()
         kilometres = miles * MILES_TO_KM
         self.output_km_text = str(kilometres)
 
     def increment_miles(self, change):
         """Increase or decrease the miles value."""
-        miles_text = self.root.ids.input_miles.text
-        if miles_text == "":
-            miles = 0.0
-        else:
-            miles = float(miles_text)
+        miles = self.get_miles()
         miles += change
         self.root.ids.input_miles.text = str(miles)
 
+
+    def get_miles(self):
+        """Get miles value from the input, treating invalid input as 0."""
+        miles_text = self.root.ids.input_miles.text
+        try:
+            miles = float(miles_text)
+        except ValueError:
+            miles = 0.0
+        return miles
 
 MilesToKilometresApp().run()
